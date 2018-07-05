@@ -64,6 +64,56 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<h1 id="introduction">Introduction</h1>
+				<p>Although the test doesn&#39;t cover it, but in real life, the overall solution needs to address the following.</p>
+				<ol>
+					<li>Concurrency and Collision Detection</li>
+					<li>Latency (Could be network, could be speed of execution, could be because of bad garbage collection).</li>
+					<li>State Management.</li>
+				</ol>
+				<p>To solve collision issue, we deal this as stream computing problem. and split the incoming order stream into two binary heap priority queues.</p>
+				<ol>
+					<li>Sell Queue (With the smallest at the top).</li>
+					<li>Buy Queue</li>
+				</ol>
+				<p>The Priority Queue, an implementation of binary heap, with smallest item on top is an obvious choice for Sell Queue. Since the complexity for insertion is O(log n) for both, but when it comes to reading, the match is always at the top of the heap.</p>
+				<p>The best algorithm for chosing the best buy match against a sell order, this is where it gets tricky. For buying match, our first priority is the to get the closest buy order that came first. The binary search tree is binary by definition, i.e. the sort takes place based on one condition. I am implementing a simple array here, with simple filtering.</p>
+				<h2 id="note-on-real-life-problem">Note on Real-life Problem</h2>
+				<blockquote>
+					<p>In real life, on an exchange with a large through put, we will have multiple machines doing the matching and sending to processing queue, the collision detection would require matches to be verfied against another lock stream before being notified back to user.</p>
+				</blockquote>
+				<h1 id="getting-started">Getting Started</h1>
+				<h2 id="pre-requisites">Pre-requisites</h2>
+				<ol>
+					<li>Node v8.11 or higher</li>
+					<li>Docker</li>
+				</ol>
+				<h2 id="installation">Installation</h2>
+				<p>Depending upon the package manager of choice, i.e. <code>npm</code>, <code>yarn</code> or <code>npx</code>.</p>
+				<pre><code class="lang-bash">&lt;package-manager&gt; install
+</code></pre>
+				<p>For me, my go choice is yarn, so</p>
+				<pre><code class="lang-bash">yarn install
+</code></pre>
+				<h2 id="simulation">Simulation</h2>
+				<h3 id="yarn">Yarn</h3>
+				<pre><code class="lang-bash">docker-compose up -d
+yarn simulate
+</code></pre>
+				<h3 id="npm">NPM</h3>
+				<pre><code class="lang-bash">docker-compose up -d
+npm run simulate
+</code></pre>
+				<h2 id="testing">Testing</h2>
+				<pre><code class="lang-bash">yarn <span class="hljs-built_in">test</span>
+</code></pre>
+				<h2 id="documentation">Documentation</h2>
+				<p>The documentation is generated automatically using excellent typedoc and can be found in <code>/docs/</code> folder. To regenerate, run</p>
+				<pre><code class="lang-bash">yarn docs:html
+</code></pre>
+				<h2 id="performance">Performance</h2>
+				<p>The required performance is to process more than 1000 matches per second. as you can see from the picture</p>
+				<p><img src="https://i.imgur.com/cDIkx3D.png" alt="Imgur"></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -92,7 +142,25 @@
 						<a href="globals.html#queuesortfunction" class="tsd-kind-icon">Queue<wbr>Sort<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#connection" class="tsd-kind-icon">connection</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#exchange" class="tsd-kind-icon">exchange</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#matchqueue" class="tsd-kind-icon">match<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#matchreciver_" class="tsd-kind-icon">match<wbr>Reciver$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#orderqueue" class="tsd-kind-icon">order<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#orderreciever_" class="tsd-kind-icon">order<wbr>Reciever$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#simplex" class="tsd-kind-icon">simplex</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a>
@@ -111,6 +179,12 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#generaterandomorder" class="tsd-kind-icon">generate<wbr>Random<wbr>Order</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sendtomatchqueue" class="tsd-kind-icon">send<wbr>ToMatch<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a>

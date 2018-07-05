@@ -90,7 +90,13 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#connection" class="tsd-kind-icon">connection</a></li>
 								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#exchange" class="tsd-kind-icon">exchange</a></li>
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#matchqueue" class="tsd-kind-icon">match<wbr>Queue</a></li>
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#matchreciver_" class="tsd-kind-icon">match<wbr>Reciver$</a></li>
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#orderqueue" class="tsd-kind-icon">order<wbr>Queue</a></li>
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#orderreciever_" class="tsd-kind-icon">order<wbr>Reciever$</a></li>
+								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#simplex" class="tsd-kind-icon">simplex</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -102,6 +108,8 @@
 								<li class="tsd-kind-function"><a href="globals.html#generateprice" class="tsd-kind-icon">generate<wbr>Price</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#generatequantity" class="tsd-kind-icon">generate<wbr>Quantity</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#generaterandomorder" class="tsd-kind-icon">generate<wbr>Random<wbr>Order</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sendtomatchqueue" class="tsd-kind-icon">send<wbr>ToMatch<wbr>Queue</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a></li>
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a></li>
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sortsells" class="tsd-kind-icon">sort<wbr>Sells</a></li>
 							</ul>
@@ -117,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">Queue<wbr>Sort<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/queues.ts:4</li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L4">lib/queues.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -149,12 +157,72 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="exchange" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> exchange</h3>
-					<div class="tsd-signature tsd-kind-icon">exchange<span class="tsd-signature-symbol">:</span> <a href="classes/exchange.html" class="tsd-signature-type">Exchange</a><span class="tsd-signature-symbol"> =&nbsp;new Exchange(createBuyQueue(), createSellQueue())</span></div>
+					<a name="connection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> connection</h3>
+					<div class="tsd-signature tsd-kind-icon">connection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Connection</span><span class="tsd-signature-symbol"> =&nbsp;new Amqp.Connection(&#x27;amqp://rabbitmq:rabbitmq@localhost&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in index.ts:7</li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L20">simulate.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+					<a name="exchange" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> exchange</h3>
+					<div class="tsd-signature tsd-kind-icon">exchange<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exchange</span><span class="tsd-signature-symbol"> =&nbsp;connection.declareExchange(&#x27;simplex&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L21">simulate.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+					<a name="matchqueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> match<wbr>Queue</h3>
+					<div class="tsd-signature tsd-kind-icon">match<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Queue</span><span class="tsd-signature-symbol"> =&nbsp;connection.declareQueue(&#x27;matches&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L23">simulate.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+					<a name="matchreciver_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> match<wbr>Reciver$</h3>
+					<div class="tsd-signature tsd-kind-icon">match<wbr>Reciver$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject&lt;Array&lt;OrderMatch&gt;&gt;()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L18">simulate.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+					<a name="orderqueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> order<wbr>Queue</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Queue</span><span class="tsd-signature-symbol"> =&nbsp;connection.declareQueue(&#x27;orders&#x27;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L22">simulate.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+					<a name="orderreciever_" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> order<wbr>Reciever$</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Reciever$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject&lt;Order&gt;()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L17">simulate.ts:17</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
+					<a name="simplex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> simplex</h3>
+					<div class="tsd-signature tsd-kind-icon">simplex<span class="tsd-signature-symbol">:</span> <a href="classes/exchange.html" class="tsd-signature-type">Exchange</a><span class="tsd-signature-symbol"> =&nbsp;new Exchange(createBuyQueue(), createSellQueue())</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L8">simulate.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/queues.ts:9</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L9">lib/queues.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -188,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/queues.ts:10</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L10">lib/queues.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -205,7 +273,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/order.ts:58</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L58">lib/order.ts:58</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="enums/ordertype.html" class="tsd-signature-type">OrderType</a></h4>
@@ -222,7 +290,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/order.ts:55</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L55">lib/order.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -239,7 +307,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/order.ts:56</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L56">lib/order.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -256,10 +324,61 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/order.ts:61</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L61">lib/order.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="classes/order.html" class="tsd-signature-type">Order</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="sendtomatchqueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>ToMatch<wbr>Queue</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>ToMatch<wbr>Queue<span class="tsd-signature-symbol">(</span>matches<span class="tsd-signature-symbol">: </span><a href="classes/ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L39">simulate.ts:39</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>matches: <a href="classes/ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="sendtoorderqueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>ToOrder<wbr>Queue</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>ToOrder<wbr>Queue<span class="tsd-signature-symbol">(</span>order<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L35">simulate.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Functions to perform when the message is recieved on appropriate queue</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>order: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -273,7 +392,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/queues.ts:6</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L6">lib/queues.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -302,7 +421,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/queues.ts:7</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L7">lib/queues.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -349,7 +468,25 @@
 						<a href="globals.html#queuesortfunction" class="tsd-kind-icon">Queue<wbr>Sort<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#connection" class="tsd-kind-icon">connection</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#exchange" class="tsd-kind-icon">exchange</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#matchqueue" class="tsd-kind-icon">match<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#matchreciver_" class="tsd-kind-icon">match<wbr>Reciver$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#orderqueue" class="tsd-kind-icon">order<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#orderreciever_" class="tsd-kind-icon">order<wbr>Reciever$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#simplex" class="tsd-kind-icon">simplex</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a>
@@ -368,6 +505,12 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#generaterandomorder" class="tsd-kind-icon">generate<wbr>Random<wbr>Order</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sendtomatchqueue" class="tsd-kind-icon">send<wbr>ToMatch<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a>

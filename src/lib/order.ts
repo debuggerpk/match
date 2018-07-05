@@ -6,14 +6,9 @@ import cuid from 'cuid';
  * @enum {number}
  */
 export enum OrderType {
-  BUY,
-  SELL,
+  BUY = 'BUY',
+  SELL = 'SELL',
 }
-
-// export type OrderPriceGenerator = () => number;
-// export type OrderQuantityGenerator = () => number;
-// export type OrderTypeGenerator = () => OrderType;
-// export type OrderGenerator = () => Order;
 
 /**
  * Defines the Order

@@ -81,6 +81,8 @@
 						<li>Easier on the caches, meaning more effecient for long queues.</li>
 						<li>Binary Heap doesn’t require extra space for pointers.</li>
 					</ol>
+					<p>These priority queues will actually be streams in a live production system. In node js world, RxJs makes life very
+					easy working with streams.</p>
 					<dl class="tsd-comment-tags">
 						<dt>export</dt>
 						<dd></dd>
@@ -112,6 +114,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="exchange.html#buyqueue" class="tsd-kind-icon">buy<wbr>Queue</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="exchange.html#matches" class="tsd-kind-icon">matches</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="exchange.html#sellqueue" class="tsd-kind-icon">sell<wbr>Queue</a></li>
 							</ul>
 						</section>
@@ -138,7 +141,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/exchange.ts:172</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L195">lib/exchange.ts:195</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -163,9 +166,33 @@
 					<div class="tsd-signature tsd-kind-icon">buy<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/exchange.ts:46</li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L59">lib/exchange.ts:59</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="matches" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> matches</h3>
+					<div class="tsd-signature tsd-kind-icon">matches<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L70">lib/exchange.ts:70</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The actual exchange will be a stream computing problem, and we don&#39;t want to miss anything in the stream.
+							The results of the streams can be scubscribed and then put into the databse.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>type</dt>
+							<dd><p>{ReplaySubject&lt;Array<OrderMatch>&gt;}</p>
+							</dd>
+							<dt>memberof</dt>
+							<dd><p>Exchange</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="sellqueue" class="tsd-anchor"></a>
@@ -173,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">sell<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/exchange.ts:47</li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L60">lib/exchange.ts:60</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -190,7 +217,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/exchange.ts:188</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L211">lib/exchange.ts:211</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -224,7 +251,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/exchange.ts:71</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L94">lib/exchange.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -266,7 +293,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/exchange.ts:136</li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L159">lib/exchange.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,6 +352,9 @@
 								<a href="exchange.html#buyqueue" class="tsd-kind-icon">buy<wbr>Queue</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="exchange.html#matches" class="tsd-kind-icon">matches</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="exchange.html#sellqueue" class="tsd-kind-icon">sell<wbr>Queue</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -350,7 +380,25 @@
 						<a href="../globals.html#queuesortfunction" class="tsd-kind-icon">Queue<wbr>Sort<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#connection" class="tsd-kind-icon">connection</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="../globals.html#exchange" class="tsd-kind-icon">exchange</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#matchqueue" class="tsd-kind-icon">match<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#matchreciver_" class="tsd-kind-icon">match<wbr>Reciver$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#orderqueue" class="tsd-kind-icon">order<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#orderreciever_" class="tsd-kind-icon">order<wbr>Reciever$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#simplex" class="tsd-kind-icon">simplex</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a>
@@ -369,6 +417,12 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#generaterandomorder" class="tsd-kind-icon">generate<wbr>Random<wbr>Order</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="../globals.html#sendtomatchqueue" class="tsd-kind-icon">send<wbr>ToMatch<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="../globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="../globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a>
