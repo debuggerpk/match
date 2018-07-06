@@ -74,4 +74,6 @@ yarn docs:html
 
 For the Sell Queue, the order ready to be placed always remain at the top of the queue, so WIN. for Buy Queue, we would be need a multidimensional buy quueue.
 
-![Imgur](https://i.imgur.com/cDIkx3D.png)
+The below image is a result of 0.5 ms i.e. 2000 orders per second are being generated, and it does that succesfully.
+
+![Imgur](https://i.imgur.com/MtHOQJc.png)
