@@ -1,5 +1,5 @@
 import ava from 'ava';
-import { Order, generateOrderType, generatePrice, generateQuantity, generateRandomOrder } from './order';
+import { generateRandomOrder } from './order';
 
 ava('Order: new Order() working successfully', test => {
   const order = generateRandomOrder();
