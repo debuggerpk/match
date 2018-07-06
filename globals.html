@@ -76,9 +76,18 @@
 						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-class"><a href="classes/buyqueue.html" class="tsd-kind-icon">Buy<wbr>Queue</a></li>
 								<li class="tsd-kind-class"><a href="classes/exchange.html" class="tsd-kind-icon">Exchange</a></li>
 								<li class="tsd-kind-class"><a href="classes/order.html" class="tsd-kind-icon">Order</a></li>
 								<li class="tsd-kind-class"><a href="classes/ordermatch.html" class="tsd-kind-icon">Order<wbr>Match</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/createdtimestamped.html" class="tsd-kind-icon">Created<wbr>Time<wbr>Stamped</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter tsd-is-not-exported"><a href="interfaces/iloopfunction.html" class="tsd-kind-icon">ILoop<wbr>Function</a></li>
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/priced.html" class="tsd-kind-icon">Priced</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -102,7 +111,6 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function"><a href="globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#createsellqueue" class="tsd-kind-icon">create<wbr>Sell<wbr>Queue</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#generateordertype" class="tsd-kind-icon">generate<wbr>Order<wbr>Type</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#generateprice" class="tsd-kind-icon">generate<wbr>Price</a></li>
@@ -110,8 +118,8 @@
 								<li class="tsd-kind-function"><a href="globals.html#generaterandomorder" class="tsd-kind-icon">generate<wbr>Random<wbr>Order</a></li>
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sendtomatchqueue" class="tsd-kind-icon">send<wbr>ToMatch<wbr>Queue</a></li>
 								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a></li>
-								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a></li>
-								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sortsells" class="tsd-kind-icon">sort<wbr>Sells</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sortbycreatedate" class="tsd-kind-icon">sort<wbr>ByCreate<wbr>Date</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#sortbyprice" class="tsd-kind-icon">sort<wbr>ByPrice</a></li>
 							</ul>
 						</section>
 					</div>
@@ -125,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">Queue<wbr>Sort<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L4">lib/queues.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L15">lib/queues.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -133,17 +141,17 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a>, b<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>a: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+												<h5>a: <span class="tsd-signature-type">any</span></h5>
 											</li>
 											<li>
-												<h5>b: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+												<h5>b: <span class="tsd-signature-type">any</span></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -162,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">connection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Connection</span><span class="tsd-signature-symbol"> =&nbsp;new Amqp.Connection(&#x27;amqp://rabbitmq:rabbitmq@localhost&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L20">simulate.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L12">simulate.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">exchange<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exchange</span><span class="tsd-signature-symbol"> =&nbsp;connection.declareExchange(&#x27;simplex&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L21">simulate.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L13">simulate.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">match<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Queue</span><span class="tsd-signature-symbol"> =&nbsp;connection.declareQueue(&#x27;matches&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L23">simulate.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L15">simulate.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">match<wbr>Reciver$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject&lt;Array&lt;OrderMatch&gt;&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L18">simulate.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L10">simulate.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -202,7 +210,7 @@
 					<div class="tsd-signature tsd-kind-icon">order<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Queue</span><span class="tsd-signature-symbol"> =&nbsp;connection.declareQueue(&#x27;orders&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L22">simulate.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L14">simulate.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -212,40 +220,23 @@
 					<div class="tsd-signature tsd-kind-icon">order<wbr>Reciever$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject&lt;Order&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L17">simulate.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L9">simulate.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
 					<a name="simplex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> simplex</h3>
-					<div class="tsd-signature tsd-kind-icon">simplex<span class="tsd-signature-symbol">:</span> <a href="classes/exchange.html" class="tsd-signature-type">Exchange</a><span class="tsd-signature-symbol"> =&nbsp;new Exchange(createBuyQueue(), createSellQueue())</span></div>
+					<div class="tsd-signature tsd-kind-icon">simplex<span class="tsd-signature-symbol">:</span> <a href="classes/exchange.html" class="tsd-signature-type">Exchange</a><span class="tsd-signature-symbol"> =&nbsp;new Exchange()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L8">simulate.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L7">simulate.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="createbuyqueue" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Buy<wbr>Queue</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Buy<wbr>Queue<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L9">lib/queues.ts:9</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="createsellqueue" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Sell<wbr>Queue</h3>
@@ -256,7 +247,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L10">lib/queues.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L72">lib/queues.ts:72</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -273,7 +264,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L58">lib/order.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/order.ts#L53">lib/order.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="enums/ordertype.html" class="tsd-signature-type">OrderType</a></h4>
@@ -290,7 +281,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L55">lib/order.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/order.ts#L50">lib/order.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -307,7 +298,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L56">lib/order.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/order.ts#L51">lib/order.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -324,7 +315,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/order.ts#L61">lib/order.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/order.ts#L56">lib/order.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="classes/order.html" class="tsd-signature-type">Order</a></h4>
@@ -341,7 +332,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L39">simulate.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L31">simulate.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -364,7 +355,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/simulate.ts#L35">simulate.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/simulate.ts#L27">simulate.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -383,25 +374,25 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
-					<a name="sortbuys" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> sort<wbr>Buys</h3>
+					<a name="sortbycreatedate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sort<wbr>ByCreate<wbr>Date</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">sort<wbr>Buys<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a>, b<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">-1</span></li>
+						<li class="tsd-signature tsd-kind-icon">sort<wbr>ByCreate<wbr>Date<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">-1</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L6">lib/queues.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L17">lib/queues.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>a: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+									<h5>a: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
-									<h5>b: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+									<h5>b: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">1</span>
@@ -412,25 +403,25 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
-					<a name="sortsells" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> sort<wbr>Sells</h3>
+					<a name="sortbyprice" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sort<wbr>ByPrice</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">sort<wbr>Sells<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a>, b<span class="tsd-signature-symbol">: </span><a href="classes/order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">-1</span></li>
+						<li class="tsd-signature tsd-kind-icon">sort<wbr>ByPrice<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">-1</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/queues.ts#L7">lib/queues.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L18">lib/queues.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>a: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+									<h5>a: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
-									<h5>b: <a href="classes/order.html" class="tsd-signature-type">Order</a></h5>
+									<h5>b: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">1</span>
@@ -456,6 +447,9 @@
 						<a href="enums/ordertype.html" class="tsd-kind-icon">Order<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/buyqueue.html" class="tsd-kind-icon">Buy<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/exchange.html" class="tsd-kind-icon">Exchange</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -463,6 +457,15 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/ordermatch.html" class="tsd-kind-icon">Order<wbr>Match</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/createdtimestamped.html" class="tsd-kind-icon">Created<wbr>Time<wbr>Stamped</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-not-exported">
+						<a href="interfaces/iloopfunction.html" class="tsd-kind-icon">ILoop<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/priced.html" class="tsd-kind-icon">Priced</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#queuesortfunction" class="tsd-kind-icon">Queue<wbr>Sort<wbr>Function</a>
@@ -489,9 +492,6 @@
 						<a href="globals.html#simplex" class="tsd-kind-icon">simplex</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a>
-					</li>
-					<li class=" tsd-kind-function">
 						<a href="globals.html#createsellqueue" class="tsd-kind-icon">create<wbr>Sell<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -513,10 +513,10 @@
 						<a href="globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a>
+						<a href="globals.html#sortbycreatedate" class="tsd-kind-icon">sort<wbr>ByCreate<wbr>Date</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#sortsells" class="tsd-kind-icon">sort<wbr>Sells</a>
+						<a href="globals.html#sortbyprice" class="tsd-kind-icon">sort<wbr>ByPrice</a>
 					</li>
 				</ul>
 			</nav>

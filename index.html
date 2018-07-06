@@ -80,7 +80,7 @@
 				<p>The best algorithm for chosing the best buy match against a sell order, this is where it gets tricky. For buying match, our first priority is the to get the closest buy order that came first. The binary search tree is binary by definition, i.e. the sort takes place based on one condition. I am implementing a simple array here, with simple filtering.</p>
 				<h2 id="note-on-real-life-problem">Note on Real-life Problem</h2>
 				<blockquote>
-					<p>In real life, on an exchange with a large through put, we will have multiple machines doing the matching and sending to processing queue, the collision detection would require matches to be verfied against another lock stream before being notified back to user.</p>
+					<p>In real life, on an exchange with a large through put, we will have multiple machines doing the matching and sending to processing queue, the collision detection would require matches to be verfied against another lock stream before being notified back to user. Also, there would be concurrency issues. The over state-management would require some heuristics. This is a good problem to solve :).</p>
 				</blockquote>
 				<h1 id="getting-started">Getting Started</h1>
 				<h2 id="pre-requisites">Pre-requisites</h2>
@@ -111,8 +111,8 @@ npm run simulate
 				<p>The documentation is generated automatically using excellent typedoc and can be found in <code>/docs/</code> folder. To regenerate, run</p>
 				<pre><code class="lang-bash">yarn docs:html
 </code></pre>
-				<h2 id="performance">Performance</h2>
-				<p>The required performance is to process more than 1000 matches per second. as you can see from the picture</p>
+				<h2 id="note-on-performance">Note on Performance</h2>
+				<p>For the Sell Queue, the order ready to be placed always remain at the top of the queue, so WIN. for Buy Queue, we would be need a multidimensional buy quueue.</p>
 				<p><img src="https://i.imgur.com/cDIkx3D.png" alt="Imgur"></p>
 			</div>
 		</div>
@@ -130,6 +130,9 @@ npm run simulate
 						<a href="enums/ordertype.html" class="tsd-kind-icon">Order<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/buyqueue.html" class="tsd-kind-icon">Buy<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/exchange.html" class="tsd-kind-icon">Exchange</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -137,6 +140,15 @@ npm run simulate
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/ordermatch.html" class="tsd-kind-icon">Order<wbr>Match</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/createdtimestamped.html" class="tsd-kind-icon">Created<wbr>Time<wbr>Stamped</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-not-exported">
+						<a href="interfaces/iloopfunction.html" class="tsd-kind-icon">ILoop<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/priced.html" class="tsd-kind-icon">Priced</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#queuesortfunction" class="tsd-kind-icon">Queue<wbr>Sort<wbr>Function</a>
@@ -163,9 +175,6 @@ npm run simulate
 						<a href="globals.html#simplex" class="tsd-kind-icon">simplex</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a>
-					</li>
-					<li class=" tsd-kind-function">
 						<a href="globals.html#createsellqueue" class="tsd-kind-icon">create<wbr>Sell<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -187,10 +196,10 @@ npm run simulate
 						<a href="globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a>
+						<a href="globals.html#sortbycreatedate" class="tsd-kind-icon">sort<wbr>ByCreate<wbr>Date</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#sortsells" class="tsd-kind-icon">sort<wbr>Sells</a>
+						<a href="globals.html#sortbyprice" class="tsd-kind-icon">sort<wbr>ByPrice</a>
 					</li>
 				</ul>
 			</nav>

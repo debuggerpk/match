@@ -105,23 +105,17 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="exchange.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="exchange.html#buyqueue" class="tsd-kind-icon">buy<wbr>Queue</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="exchange.html#matches" class="tsd-kind-icon">matches</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="exchange.html#matchstream_" class="tsd-kind-icon">match<wbr>Stream$</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="exchange.html#sellqueue" class="tsd-kind-icon">sell<wbr>Queue</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="exchange.html#match" class="tsd-kind-icon">match</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="exchange.html#domatch" class="tsd-kind-icon">do<wbr>Match</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="exchange.html#matchbuys" class="tsd-kind-icon">match<wbr>Buys</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="exchange.html#matchsells" class="tsd-kind-icon">match<wbr>Sells</a></li>
 							</ul>
@@ -130,59 +124,30 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Exchange<span class="tsd-signature-symbol">(</span>buyQueue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span>, sellQueue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="exchange.html" class="tsd-signature-type">Exchange</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L195">lib/exchange.ts:195</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>buyQueue: <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5>sellQueue: <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="exchange.html" class="tsd-signature-type">Exchange</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="buyqueue" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> buy<wbr>Queue</h3>
-					<div class="tsd-signature tsd-kind-icon">buy<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">buy<wbr>Queue<span class="tsd-signature-symbol">:</span> <a href="buyqueue.html" class="tsd-signature-type">BuyQueue</a><span class="tsd-signature-symbol"> =&nbsp;new BuyQueue()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L59">lib/exchange.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/exchange.ts#L60">lib/exchange.ts:60</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="matches" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> matches</h3>
-					<div class="tsd-signature tsd-kind-icon">matches<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject()</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="matchstream_" class="tsd-anchor"></a>
+					<h3>match<wbr>Stream$</h3>
+					<div class="tsd-signature tsd-kind-icon">match<wbr>Stream$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReplaySubject</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new ReplaySubject()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L70">lib/exchange.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/exchange.ts#L71">lib/exchange.ts:71</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The actual exchange will be a stream computing problem, and we don&#39;t want to miss anything in the stream.
-							The results of the streams can be scubscribed and then put into the databse.</p>
+							The results of the streams can be scubscribed and then put into the databse. or destroyed :)</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>type</dt>
@@ -197,10 +162,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="sellqueue" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> sell<wbr>Queue</h3>
-					<div class="tsd-signature tsd-kind-icon">sell<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">sell<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">&lt;</span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;createSellQueue()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L60">lib/exchange.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/exchange.ts#L61">lib/exchange.ts:61</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -208,22 +173,21 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="match" class="tsd-anchor"></a>
-					<h3>match</h3>
+					<a name="domatch" class="tsd-anchor"></a>
+					<h3>do<wbr>Match</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">match<span class="tsd-signature-symbol">(</span>order<span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">do<wbr>Match<span class="tsd-signature-symbol">(</span>order<span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L211">lib/exchange.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/exchange.ts#L208">lib/exchange.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>First try to match the order against either buyQueue or SellQueue. if no match is found,
-									it adds the order to the queue</p>
+									<p>Split the orders into two streams depending upon the conditions.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>memberof</dt>
@@ -237,7 +201,7 @@
 									<h5>order: <a href="order.html" class="tsd-signature-type">Order</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -245,13 +209,13 @@
 					<a name="matchbuys" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> match<wbr>Buys</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">match<wbr>Buys<span class="tsd-signature-symbol">(</span>buyOrder<span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">match<wbr>Buys<span class="tsd-signature-symbol">(</span>buyOrder<span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L94">lib/exchange.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/exchange.ts#L97">lib/exchange.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -267,6 +231,7 @@
 									the top most item. (Since the sell priority queue is arranged with least sell price on top)</li>
 									<li>The buy order gets exhausted.</li>
 								</ol>
+								<p>Performance. Its literally at the top the queue! no brainer</p>
 								<dl class="tsd-comment-tags">
 									<dt>memberof</dt>
 									<dd><p>Exchange</p>
@@ -279,7 +244,7 @@
 									<h5>buyOrder: <a href="order.html" class="tsd-signature-type">Order</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -287,28 +252,23 @@
 					<a name="matchsells" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> match<wbr>Sells</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">match<wbr>Sells<span class="tsd-signature-symbol">(</span>sellOrder<span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">match<wbr>Sells<span class="tsd-signature-symbol">(</span>sellOrder<span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/daeac8b/src/lib/exchange.ts#L159">lib/exchange.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/exchange.ts#L154">lib/exchange.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Matches the single sell order against the buy orders priority queue.</p>
 								</div>
-								<p>When selling we iterate over each item of the buy prioirity queue using a while loop.</p>
-								<p>If the buy queue is empty, we simply push the sell order into sell priority queue.</p>
-								<p>The exit conditions of while loop are</p>
-								<ol>
-									<li>We reach the end of the sell priority queue</li>
-									<li>The sell price is greater then the sell price of
-									the top most item. (Since the buy priority queue is arranged with greatest buy price on top)</li>
-									<li>The sell order queue gets exhausted.</li>
-								</ol>
+								<p>This one is tricky. The Buy Queue is FIFO, so we create a seprate strcuture BuyQueue, which holds two BST
+									(Binary Search Trees) in parallel. We find the minimums from buyQueue tree arranged by price, at each iteration.
+									We use javascripts native concurrency, at push the match into the match stream as soon as the match is found, and
+								our loop keeps on running.</p>
 								<dl class="tsd-comment-tags">
 									<dt>memberof</dt>
 									<dd><p>Exchange</p>
@@ -321,7 +281,7 @@
 									<h5>sellOrder: <a href="order.html" class="tsd-signature-type">Order</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="ordermatch.html" class="tsd-signature-type">OrderMatch</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -340,25 +300,25 @@
 					<li class=" tsd-kind-enum">
 						<a href="../enums/ordertype.html" class="tsd-kind-icon">Order<wbr>Type</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="buyqueue.html" class="tsd-kind-icon">Buy<wbr>Queue</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
 						<a href="exchange.html" class="tsd-kind-icon">Exchange</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="exchange.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="exchange.html#buyqueue" class="tsd-kind-icon">buy<wbr>Queue</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="exchange.html#matches" class="tsd-kind-icon">matches</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="exchange.html#matchstream_" class="tsd-kind-icon">match<wbr>Stream$</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="exchange.html#sellqueue" class="tsd-kind-icon">sell<wbr>Queue</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="exchange.html#match" class="tsd-kind-icon">match</a>
+								<a href="exchange.html#domatch" class="tsd-kind-icon">do<wbr>Match</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="exchange.html#matchbuys" class="tsd-kind-icon">match<wbr>Buys</a>
@@ -375,6 +335,15 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="ordermatch.html" class="tsd-kind-icon">Order<wbr>Match</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="../interfaces/createdtimestamped.html" class="tsd-kind-icon">Created<wbr>Time<wbr>Stamped</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../interfaces/iloopfunction.html" class="tsd-kind-icon">ILoop<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="../interfaces/priced.html" class="tsd-kind-icon">Priced</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#queuesortfunction" class="tsd-kind-icon">Queue<wbr>Sort<wbr>Function</a>
@@ -401,9 +370,6 @@
 						<a href="../globals.html#simplex" class="tsd-kind-icon">simplex</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="../globals.html#createbuyqueue" class="tsd-kind-icon">create<wbr>Buy<wbr>Queue</a>
-					</li>
-					<li class=" tsd-kind-function">
 						<a href="../globals.html#createsellqueue" class="tsd-kind-icon">create<wbr>Sell<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -425,10 +391,10 @@
 						<a href="../globals.html#sendtoorderqueue" class="tsd-kind-icon">send<wbr>ToOrder<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="../globals.html#sortbuys" class="tsd-kind-icon">sort<wbr>Buys</a>
+						<a href="../globals.html#sortbycreatedate" class="tsd-kind-icon">sort<wbr>ByCreate<wbr>Date</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="../globals.html#sortsells" class="tsd-kind-icon">sort<wbr>Sells</a>
+						<a href="../globals.html#sortbyprice" class="tsd-kind-icon">sort<wbr>ByPrice</a>
 					</li>
 				</ul>
 			</nav>
