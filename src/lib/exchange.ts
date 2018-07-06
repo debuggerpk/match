@@ -2,6 +2,7 @@ import cuid from 'cuid';
 import { ReplaySubject } from 'rxjs';
 import { PriorityQueue } from 'typescript-collections';
 import { Order, OrderType } from './order';
+import { BuyQueue, createSellQueue } from './queues';
 
 /**
  * Defines the match once an order has been matched
@@ -56,18 +57,18 @@ export class OrderMatch {
  * @class Exchange
  */
 export class Exchange {
-  private buyQueue!: PriorityQueue<Order>;
-  private sellQueue!: PriorityQueue<Order>;
+  private buyQueue: BuyQueue = new BuyQueue();
+  private sellQueue: PriorityQueue<Order> = createSellQueue();
 
   /**
    * The actual exchange will be a stream computing problem, and we don't want to miss anything in the stream.
-   * The results of the streams can be scubscribed and then put into the databse.
+   * The results of the streams can be scubscribed and then put into the databse. or destroyed :)
    *
-   * @private
+   * @public
    * @type {ReplaySubject<Array<OrderMatch>>}
    * @memberof Exchange
    */
-  private matches: ReplaySubject<Array<OrderMatch>> = new ReplaySubject();
+  public matchStream$: ReplaySubject<OrderMatch> = new ReplaySubject();
 
   /**
    *
@@ -84,6 +85,8 @@ export class Exchange {
    *       the top most item. (Since the sell priority queue is arranged with least sell price on top)
    *    3. The buy order gets exhausted.
    *
+   * Performance. Its literally at the top the queue! no brainer
+   *
    *
    * @private
    * @param {Order} buyOrder
@@ -91,21 +94,20 @@ export class Exchange {
    * @returns {Array<OrderMatch>}
    * @memberof Exchange
    */
-  private matchBuys(buyOrder: Order): Array<OrderMatch> {
-    // tslint:disable-next-line:prefer-array-literal
-    const matches: Array<OrderMatch> = [];
-
+  private matchBuys(buyOrder: Order): void {
     if (this.sellQueue.isEmpty()) {
       this.buyQueue.add(buyOrder);
-      return matches;
     }
 
+    // the loop might not be effecient, but javascript build in concurrency takes the cake.
     while (!this.sellQueue.isEmpty()) {
       let sellOrder = <Order>this.sellQueue.dequeue();
 
       if (buyOrder.price >= sellOrder.price) {
         if (buyOrder.quantity < sellOrder.quantity) {
-          matches.push(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, buyOrder.quantity));
+          // Push the match to Match Stream
+          this.matchStream$.next(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, buyOrder.quantity));
+
           sellOrder = {
             ...sellOrder,
             quantity: sellOrder.quantity - buyOrder.quantity,
@@ -114,7 +116,8 @@ export class Exchange {
           this.sellQueue.add(sellOrder);
           break;
         } else {
-          matches.push(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, sellOrder.quantity));
+          // Push the match into Match Stream
+          this.matchStream$.next(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, sellOrder.quantity));
 
           if (buyOrder.quantity === sellOrder.quantity) {
             break;
@@ -132,85 +135,77 @@ export class Exchange {
         break;
       }
     }
-
-    return matches;
   }
 
   /**
    *
    * Matches the single sell order against the buy orders priority queue.
    *
-   * When selling we iterate over each item of the buy prioirity queue using a while loop.
-   *
-   * If the buy queue is empty, we simply push the sell order into sell priority queue.
-   *
-   * The exit conditions of while loop are
-   *
-   *    1. We reach the end of the sell priority queue
-   *    2. The sell price is greater then the sell price of
-   *       the top most item. (Since the buy priority queue is arranged with greatest buy price on top)
-   *    3. The sell order queue gets exhausted.
+   * This one is tricky. The Buy Queue is FIFO, so we create a seprate strcuture BuyQueue, which holds two BST
+   * (Binary Search Trees) in parallel. We find the minimums from buyQueue tree arranged by price, at each iteration.
+   * We use javascripts native concurrency, at push the match into the match stream as soon as the match is found, and
+   * our loop keeps on running.
    *
    * @private
    * @param {Order} sellOrder
    * @returns {Array<OrderMatch>}
    * @memberof Exchange
    */
-  private matchSells(sellOrder: Order): Array<OrderMatch> {
-    // tslint:disable-next-line:prefer-array-literal
-    const matches: Array<OrderMatch> = [];
+  private matchSells(sellOrder: Order): void {
     if (this.buyQueue.isEmpty()) {
       this.sellQueue.add(sellOrder);
-      return matches;
+      return;
     }
 
-    while (!this.buyQueue.isEmpty()) {
-      const buyOrder = <Order>this.buyQueue.dequeue();
+    let minBuyOrder = <Order>this.buyQueue.minByPrice();
 
-      if (buyOrder.price >= sellOrder.price) {
-        if (buyOrder.quantity <= sellOrder.quantity) {
-          matches.push(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, buyOrder.quantity));
+    if (minBuyOrder.price > sellOrder.price) {
+      this.buyQueue.iterateByDate(buyOrder => {
+        if (buyOrder.price >= sellOrder.price) {
+          if (sellOrder.quantity > buyOrder.quantity) {
+            this.matchStream$.next(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, buyOrder.quantity));
 
-          if (buyOrder.quantity === sellOrder.quantity) {
-            break;
+            // Since the buy order gets exhauseted, we remove it from buy order queue, and then update the sell order.
+            this.buyQueue.remove(buyOrder);
+
+            // Updating the sell order
+
+            sellOrder = { ...sellOrder, quantity: sellOrder.quantity - buyOrder.quantity, updatedAt: new Date() };
+
+            // Now to break the loop or not
+            // if the minimum buy order is still greater than current sell price, we break the loop here, else we
+            // keep on iterating
+            minBuyOrder = <Order>this.buyQueue.minByPrice();
+            if (this.buyQueue.isEmpty() || (minBuyOrder && minBuyOrder.price < sellOrder.price)) {
+              return false;
+            }
+          } else {
+            this.matchStream$.next(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, sellOrder.quantity));
+            this.buyQueue.remove(buyOrder);
+
+            // we break the loop here if the quantities match since sell order gets exhaused buy we still need to go
+            // back and back the remaining buy order into buy queue
+            if (buyOrder.quantity === sellOrder.quantity) {
+              return false;
+            }
+
+            // adding the remaining order back, and breaking the order
+            this.buyQueue.add({ ...buyOrder, quantity: buyOrder.quantity - sellOrder.quantity, updatedAt: new Date() });
+            return false;
           }
-
-          sellOrder = {
-            ...sellOrder,
-            quantity: sellOrder.quantity - buyOrder.quantity,
-            updatedAt: new Date(),
-          };
-        } else {
-          matches.push(new OrderMatch(buyOrder.id, sellOrder.id, sellOrder.price, sellOrder.quantity));
-          this.buyQueue.add({ ...buyOrder, quantity: buyOrder.quantity - sellOrder.quantity, updatedAt: new Date() });
-          break;
         }
-      } else {
-        this.sellQueue.add(sellOrder);
-        this.buyQueue.add(buyOrder);
-        break;
-      }
+      });
     }
-    return matches;
-  }
-
-  constructor(buyQueue: PriorityQueue<Order>, sellQueue: PriorityQueue<Order>) {
-    this.buyQueue = buyQueue;
-    this.sellQueue = sellQueue;
   }
 
   /**
-   *
-   * First try to match the order against either buyQueue or SellQueue. if no match is found,
-   * it adds the order to the queue
+   * Split the orders into two streams depending upon the conditions.
    *
    * @param {Order} order
    * @returns {Array<OrderMatch>}
    * @memberof Exchange
    */
-  public match(order: Order): Array<OrderMatch> {
-    const matches: Array<OrderMatch> = order.type === OrderType.BUY ? this.matchBuys(order) : this.matchSells(order);
-    this.matches.next(matches);
-    return matches;
+  public doMatch(order: Order): void {
+    order.type === OrderType.BUY ? this.matchBuys(order) : this.matchSells(order);
   }
 }

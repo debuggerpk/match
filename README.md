@@ -17,7 +17,7 @@ The best algorithm for chosing the best buy match against a sell order, this is 
 
 ## Note on Real-life Problem
 
-> In real life, on an exchange with a large through put, we will have multiple machines doing the matching and sending to processing queue, the collision detection would require matches to be verfied against another lock stream before being notified back to user.
+> In real life, on an exchange with a large through put, we will have multiple machines doing the matching and sending to processing queue, the collision detection would require matches to be verfied against another lock stream before being notified back to user. Also, there would be concurrency issues. The over state-management would require some heuristics. This is a good problem to solve :).
 
 # Getting Started
 
@@ -70,8 +70,8 @@ The documentation is generated automatically using excellent typedoc and can be 
 yarn docs:html
 ```
 
-## Performance
+## Note on Performance
 
-The required performance is to process more than 1000 matches per second. as you can see from the picture
+For the Sell Queue, the order ready to be placed always remain at the top of the queue, so WIN. for Buy Queue, we would be need a multidimensional buy quueue.
 
 ![Imgur](https://i.imgur.com/cDIkx3D.png)

@@ -3,16 +3,8 @@ import { interval, ReplaySubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Exchange, OrderMatch } from './lib/exchange';
 import { generateRandomOrder, Order } from './lib/order';
-import { createBuyQueue, createSellQueue } from './lib/queues';
 
-const simplex = new Exchange(createBuyQueue(), createSellQueue());
-
-// interval(0.001)
-//   .pipe(
-//     map(generateRandomOrder),
-//     map(order => exchange.match(order)),
-//   )
-//   .subscribe();
+const simplex = new Exchange();
 
 const orderReciever$: ReplaySubject<Order> = new ReplaySubject<Order>();
 const matchReciver$: ReplaySubject<Array<OrderMatch>> = new ReplaySubject<Array<OrderMatch>>();
@@ -55,11 +47,10 @@ connection.completeConfiguration().then(() => {
 /**
  * Subscribing to reciever, to get from the queue and then simpulate exchange
  */
-orderReciever$
-  .pipe(
-    map(order => simplex.match(order)),
-    tap(sendToMatchQueue),
-  )
-  .subscribe();
-
+orderReciever$.pipe(map(order => simplex.doMatch(order))).subscribe();
 matchReciver$.pipe(tap(console.log)).subscribe();
+
+/**
+ * Finally pushing the messages onto the messages queue. or we can simply attach a database here.
+ */
+simplex.matchStream$.pipe(map(sendToMatchQueue)).subscribe();
