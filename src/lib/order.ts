@@ -49,9 +49,7 @@ export class Order {
 
 export const generatePrice: () => number = () => Math.floor(Math.random() * 250);
 export const generateQuantity: () => number = () => Math.floor(Math.random() * 250);
-
 export const generateOrderType: () => OrderType = () =>
   Order.orderTypes[Math.floor(Math.random() * Order.orderTypes.length)];
-
 export const generateRandomOrder: () => Order = () =>
   new Order(generatePrice(), generateQuantity(), generateOrderType());

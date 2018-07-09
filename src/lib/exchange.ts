@@ -143,8 +143,8 @@ export class Exchange {
    *
    * This one is tricky. The Buy Queue is FIFO, so we create a seprate strcuture BuyQueue, which holds two BST
    * (Binary Search Trees) in parallel. We find the minimums from buyQueue tree arranged by price, at each iteration.
-   * We use javascripts native concurrency, at push the match into the match stream as soon as the match is found, and
-   * our loop keeps on running.
+   * We use javascripts native concurrency, we push into the match stream as soon as the match is found, and
+   * our loop keeps on running. WIN.
    *
    * @private
    * @param {Order} sellOrder

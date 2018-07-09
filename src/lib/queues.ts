@@ -16,52 +16,127 @@ export type QueueSortFunction = (a: any, b: any) => number;
 
 const sortByCreateDate: QueueSortFunction = (a, b) => (a.updatedAt < b.updatedAt ? 1 : -1);
 const sortByPrice: QueueSortFunction = (a, b) => (a.price < b.price ? 1 : -1);
-
+/**
+ * Defines Buy Queue. A constructor that mantains two binary search tree, one to mantain the ordering by date,
+ * and the other to maintain the ordering by value.
+ *
+ * @export
+ * @class BuyQueue
+ */
 export class BuyQueue {
   private byPrice = new BSTreeKV<Priced, Order>(sortByPrice);
   private byDate = new BSTreeKV<CreatedTimeStamped, Order>(sortByCreateDate);
 
-  public minByPrice() {
+  /**
+   * Search the BST to get minimum by price.
+   *
+   * @returns {(Order | undefined)}
+   * @memberof BuyQueue
+   */
+  public minByPrice(): Order | undefined {
     return this.byPrice.minimum();
   }
 
-  public maxByPrice() {
+  /**
+   * Search the BST to get maximum by price
+   *
+   * @returns {(Order | undefined)}
+   * @memberof BuyQueue
+   */
+  public maxByPrice(): Order | undefined {
     return this.byPrice.maximum();
   }
 
-  public minByDate() {
+  /**
+   * Search the BST to get minimum by Date
+   *
+   * @returns {(Order | undefined)}
+   * @memberof BuyQueue
+   */
+  public minByDate(): Order | undefined {
     return this.byDate.minimum();
   }
 
-  public maxByDate() {
+  /**
+   * Search the BST to get maximum by Date
+   *
+   * @returns {(Order | undefined)}
+   * @memberof BuyQueue
+   */
+  public maxByDate(): Order | undefined {
     return this.byDate.maximum();
   }
 
-  public searchByPrice(price: number) {
+  /**
+   * Search by price, gets the Order if we are given a price
+   *
+   * @param {number} price
+   * @returns {(Order | undefined)}
+   * @memberof BuyQueue
+   */
+  public searchByPrice(price: number): Order | undefined {
     return this.byPrice.search({ price });
   }
 
-  public searchByDate(createdAt: Date) {
+  /**
+   * If we know the creation date, search by creation date
+   *
+   * @param {Date} createdAt
+   * @returns {(Order | undefined)}
+   * @memberof BuyQueue
+   */
+  public searchByDate(createdAt: Date): Order | undefined {
     return this.byDate.search({ createdAt });
   }
 
-  public iterateByDate(callback: ILoopFunction<Order>) {
+  /**
+   * Applies the given function on each node of the tree
+   *
+   * @param {ILoopFunction<Order>} callback
+   * @returns {void}
+   * @memberof BuyQueue
+   */
+  public iterateByDate(callback: ILoopFunction<Order>): void {
     return this.byPrice.forEach(callback);
   }
 
-  public add(order: Order) {
+  /**
+   * Adds an item in the tree
+   *
+   * @param {Order} order
+   * @memberof BuyQueue
+   */
+  public add(order: Order): void {
     this.byDate.add(order);
     this.byPrice.add(order);
   }
 
-  public size() {
-    this.byPrice.size();
+  /**
+   * Gets the size of the BST
+   *
+   * @returns {number}
+   * @memberof BuyQueue
+   */
+  public size(): number {
+    return this.byPrice.size();
   }
 
-  public isEmpty() {
+  /**
+   * Gets true if the tree is empty, else false
+   *
+   * @returns {boolean}
+   * @memberof BuyQueue
+   */
+  public isEmpty(): boolean {
     return this.byDate.isEmpty();
   }
 
+  /**
+   * Remove the node from both BSTs, the one ordered by date, and the other ordered by price
+   *
+   * @param {Order} order
+   * @memberof BuyQueue
+   */
   public remove(order: Order) {
     const { price, createdAt } = order;
     this.byDate.remove({ createdAt });
