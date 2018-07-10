@@ -95,9 +95,6 @@ export class Exchange {
    * @memberof Exchange
    */
   private matchBuys(buyOrder: Order): void {
-    console.log('\n--- Buy Order ---\n');
-    console.log(buyOrder);
-
     if (this.sellQueue.isEmpty()) {
       this.buyQueue.add(buyOrder);
     }
@@ -105,9 +102,6 @@ export class Exchange {
     // the loop might not be effecient, but javascript build in concurrency takes the cake.
     while (!this.sellQueue.isEmpty()) {
       let sellOrder = <Order>this.sellQueue.dequeue();
-
-      console.log('\n--- Min Sell Order ---\n');
-      console.log(sellOrder);
 
       if (buyOrder.price >= sellOrder.price) {
         if (buyOrder.quantity < sellOrder.quantity) {
@@ -158,8 +152,6 @@ export class Exchange {
    * @memberof Exchange
    */
   private matchSells(sellOrder: Order): void {
-    console.log('\n--- Sell Order ---\n');
-    console.log(sellOrder);
     if (this.buyQueue.isEmpty()) {
       this.sellQueue.add(sellOrder);
       return;

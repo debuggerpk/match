@@ -216,5 +216,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Firebase Keyfile
+
+firebase.json
+
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows,webstorm,visualstudiocode
