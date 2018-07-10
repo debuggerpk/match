@@ -7,7 +7,6 @@ import { generateRandomOrder, Order } from './lib/order';
 const simplex = new Exchange();
 
 const orderReciever$: ReplaySubject<Order> = new ReplaySubject<Order>();
-const matchReciver$: ReplaySubject<Array<OrderMatch>> = new ReplaySubject<Array<OrderMatch>>();
 
 const connection = new Amqp.Connection('amqp://rabbitmq:rabbitmq@localhost');
 const exchange = connection.declareExchange('simplex');
@@ -18,7 +17,6 @@ orderQueue.bind(exchange);
 matchQueue.bind(exchange);
 
 orderQueue.startConsumer(msg => orderReciever$.next(msg));
-matchQueue.startConsumer(msg => matchReciver$.next(msg));
 
 /**
  * Functions to perform when the message is recieved on appropriate queue
@@ -48,7 +46,6 @@ connection.completeConfiguration().then(() => {
  * Subscribing to reciever, to get from the queue and then simpulate exchange
  */
 orderReciever$.pipe(map(order => simplex.doMatch(order))).subscribe();
-matchReciver$.pipe(tap(console.log)).subscribe();
 
 /**
  * Finally pushing the messages onto the messages queue. or we can simply attach a database here.

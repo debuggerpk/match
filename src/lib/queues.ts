@@ -14,8 +14,9 @@ interface Priced {
 
 export type QueueSortFunction = (a: any, b: any) => number;
 
-const sortByCreateDate: QueueSortFunction = (a, b) => (a.updatedAt < b.updatedAt ? 1 : -1);
-const sortByPrice: QueueSortFunction = (a, b) => (a.price < b.price ? 1 : -1);
+const sellSortByPrice: QueueSortFunction = (a, b) => (a.price < b.price ? 1 : -1);
+const buySortByPrice: QueueSortFunction = (a, b) => (a.price > b.price ? 1 : -1);
+const sortByCreateDate: QueueSortFunction = (a, b) => (a.createdAt > b.createdAt ? 1 : -1);
 /**
  * Defines Buy Queue. A constructor that mantains two binary search tree, one to mantain the ordering by date,
  * and the other to maintain the ordering by value.
@@ -24,7 +25,7 @@ const sortByPrice: QueueSortFunction = (a, b) => (a.price < b.price ? 1 : -1);
  * @class BuyQueue
  */
 export class BuyQueue {
-  private byPrice = new BSTreeKV<Priced, Order>(sortByPrice);
+  private byPrice = new BSTreeKV<Priced, Order>(buySortByPrice);
   private byDate = new BSTreeKV<CreatedTimeStamped, Order>(sortByCreateDate);
 
   /**
@@ -142,6 +143,10 @@ export class BuyQueue {
     this.byDate.remove({ createdAt });
     this.byPrice.remove({ price });
   }
+
+  public arrayByDate(): Array<Order> {
+    return this.byDate.toArray();
+  }
 }
 
-export const createSellQueue: () => PriorityQueue<Order> = () => new PriorityQueue<Order>(sortByPrice);
+export const createSellQueue: () => PriorityQueue<Order> = () => new PriorityQueue<Order>(sellSortByPrice);

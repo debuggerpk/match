@@ -66,6 +66,21 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Defines Buy Queue. A constructor that mantains two binary search tree, one to mantain the ordering by date,
+						and the other to maintain the ordering by value.</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+						<dt>class</dt>
+						<dd><p>BuyQueue</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -112,7 +127,7 @@
 					<div class="tsd-signature tsd-kind-icon">by<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BSTreeKV</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/createdtimestamped.html" class="tsd-signature-type">CreatedTimeStamped</a><span class="tsd-signature-symbol">, </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new BSTreeKV&lt;CreatedTimeStamped, Order&gt;(sortByCreateDate)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L22">lib/queues.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L28">lib/queues.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +137,7 @@
 					<div class="tsd-signature tsd-kind-icon">by<wbr>Price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BSTreeKV</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/priced.html" class="tsd-signature-type">Priced</a><span class="tsd-signature-symbol">, </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new BSTreeKV&lt;Priced, Order&gt;(sortByPrice)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L21">lib/queues.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L27">lib/queues.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,9 +154,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L52">lib/queues.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L109">lib/queues.ts:109</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds an item in the tree</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -162,9 +187,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L61">lib/queues.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L130">lib/queues.ts:130</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets true if the tree is empty, else false</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -179,9 +214,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L48">lib/queues.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L99">lib/queues.ts:99</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Applies the given function on each node of the tree</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -196,18 +241,28 @@
 					<a name="maxbydate" class="tsd-anchor"></a>
 					<h3>max<wbr>ByDate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">max<wbr>ByDate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="order.html" class="tsd-signature-type">Order</a></li>
+						<li class="tsd-signature tsd-kind-icon">max<wbr>ByDate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L36">lib/queues.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L66">lib/queues.ts:66</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Search the BST to get maximum by Date</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="order.html" class="tsd-signature-type">Order</a>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="order.html" class="tsd-signature-type">Order</a>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -216,18 +271,28 @@
 					<a name="maxbyprice" class="tsd-anchor"></a>
 					<h3>max<wbr>ByPrice</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">max<wbr>ByPrice<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="order.html" class="tsd-signature-type">Order</a></li>
+						<li class="tsd-signature tsd-kind-icon">max<wbr>ByPrice<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L28">lib/queues.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L46">lib/queues.ts:46</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Search the BST to get maximum by price</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="order.html" class="tsd-signature-type">Order</a>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="order.html" class="tsd-signature-type">Order</a>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -236,18 +301,28 @@
 					<a name="minbydate" class="tsd-anchor"></a>
 					<h3>min<wbr>ByDate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">min<wbr>ByDate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="order.html" class="tsd-signature-type">Order</a></li>
+						<li class="tsd-signature tsd-kind-icon">min<wbr>ByDate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L32">lib/queues.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L56">lib/queues.ts:56</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Search the BST to get minimum by Date</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="order.html" class="tsd-signature-type">Order</a>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="order.html" class="tsd-signature-type">Order</a>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -256,18 +331,28 @@
 					<a name="minbyprice" class="tsd-anchor"></a>
 					<h3>min<wbr>ByPrice</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">min<wbr>ByPrice<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="order.html" class="tsd-signature-type">Order</a></li>
+						<li class="tsd-signature tsd-kind-icon">min<wbr>ByPrice<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L24">lib/queues.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L36">lib/queues.ts:36</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Search the BST to get minimum by price.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="order.html" class="tsd-signature-type">Order</a>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="order.html" class="tsd-signature-type">Order</a>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -282,9 +367,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L65">lib/queues.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L140">lib/queues.ts:140</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove the node from both BSTs, the one ordered by date, and the other ordered by price</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -299,24 +394,34 @@
 					<a name="searchbydate" class="tsd-anchor"></a>
 					<h3>search<wbr>ByDate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">search<wbr>ByDate<span class="tsd-signature-symbol">(</span>createdAt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="order.html" class="tsd-signature-type">Order</a></li>
+						<li class="tsd-signature tsd-kind-icon">search<wbr>ByDate<span class="tsd-signature-symbol">(</span>createdAt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L44">lib/queues.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L88">lib/queues.ts:88</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If we know the creation date, search by creation date</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>createdAt: <span class="tsd-signature-type">Date</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+							<h4 class="tsd-returns-title">Returns <a href="order.html" class="tsd-signature-type">Order</a>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="order.html" class="tsd-signature-type">Order</a>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -325,24 +430,34 @@
 					<a name="searchbyprice" class="tsd-anchor"></a>
 					<h3>search<wbr>ByPrice</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">search<wbr>ByPrice<span class="tsd-signature-symbol">(</span>price<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="order.html" class="tsd-signature-type">Order</a></li>
+						<li class="tsd-signature tsd-kind-icon">search<wbr>ByPrice<span class="tsd-signature-symbol">(</span>price<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="order.html" class="tsd-signature-type">Order</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L40">lib/queues.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L77">lib/queues.ts:77</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Search by price, gets the Order if we are given a price</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>price: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+							<h4 class="tsd-returns-title">Returns <a href="order.html" class="tsd-signature-type">Order</a>
 								<span class="tsd-signature-symbol"> | </span>
-								<a href="order.html" class="tsd-signature-type">Order</a>
+								<span class="tsd-signature-type">undefined</span>
 							</h4>
 						</li>
 					</ul>
@@ -351,16 +466,26 @@
 					<a name="size" class="tsd-anchor"></a>
 					<h3>size</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/6da0086/src/lib/queues.ts#L57">lib/queues.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/ysfjwd/match/blob/bf0936d/src/lib/queues.ts#L120">lib/queues.ts:120</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the size of the BST</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BuyQueue</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>

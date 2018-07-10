@@ -43,7 +43,6 @@
     "concurrency": 5,
     "failFast": true,
     "failWithoutAssertions": false,
-    "tap": true,
     "compileEnhancements": true,
     "require": [
       "ts-node/register"
