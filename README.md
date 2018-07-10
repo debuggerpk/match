@@ -44,6 +44,23 @@ yarn install
 
 ### Yarn
 
+The simulation requires a firebase firestore db. The configuration can be found at
+
+```bash
+./lib/simulate.ts
+```
+
+just update `serviceAccount` and `const` and `databaseURL` key when intializing.
+
+```ts
+const serviceAccount = require('./firebase.json');
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: 'https://simplex-e7b03.firebaseio.com',
+});
+```
+
 ```bash
 docker-compose up -d
 yarn simulate
@@ -77,3 +94,5 @@ For the Sell Queue, the order ready to be placed always remain at the top of the
 The below image is a result of 0.5 ms i.e. 2000 orders per second are being generated, and it does that succesfully.
 
 ![Imgur](https://i.imgur.com/MtHOQJc.png)
+
+The execution time for BuyQueue would however increase if we have a long enough buy queue. A good solution would be to keep on trimming the queue by maintaing the last known market price and add a padding to price and trim the orders which doesn't feature in our hold bracket. that way, we mantain a small queue for processing at all times. We can think of multiple scenarios to optimize.

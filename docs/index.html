@@ -97,6 +97,17 @@
 </code></pre>
 				<h2 id="simulation">Simulation</h2>
 				<h3 id="yarn">Yarn</h3>
+				<p>The simulation requires a firebase firestore db. The configuration can be found at</p>
+				<pre><code class="lang-bash">./lib/simulate.ts
+</code></pre>
+				<p>just update <code>serviceAccount</code> and <code>const</code> and <code>databaseURL</code> key when intializing.</p>
+				<pre><code class="lang-ts"><span class="hljs-keyword">const</span> serviceAccount = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./firebase.json'</span>);
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: <span class="hljs-string">'https://simplex-e7b03.firebaseio.com'</span>,
+});
+</code></pre>
 				<pre><code class="lang-bash">docker-compose up -d
 yarn simulate
 </code></pre>
@@ -115,6 +126,7 @@ npm run simulate
 				<p>For the Sell Queue, the order ready to be placed always remain at the top of the queue, so WIN. for Buy Queue, we would be need a multidimensional buy quueue.</p>
 				<p>The below image is a result of 0.5 ms i.e. 2000 orders per second are being generated, and it does that succesfully.</p>
 				<p><img src="https://i.imgur.com/MtHOQJc.png" alt="Imgur"></p>
+				<p>The execution time for BuyQueue would however increase if we have a long enough buy queue. A good solution would be to keep on trimming the queue by maintaing the last known market price and add a padding to price and trim the orders which doesn&#39;t feature in our hold bracket. that way, we mantain a small queue for processing at all times. We can think of multiple scenarios to optimize.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -158,13 +170,22 @@ npm run simulate
 						<a href="globals.html#connection" class="tsd-kind-icon">connection</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#db" class="tsd-kind-icon">db</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#exchange" class="tsd-kind-icon">exchange</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#matchcollection" class="tsd-kind-icon">match<wbr>Collection</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#matchqueue" class="tsd-kind-icon">match<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#matchreciver_" class="tsd-kind-icon">match<wbr>Reciver$</a>
+						<a href="globals.html#matchreciever_" class="tsd-kind-icon">match<wbr>Reciever$</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#ordercollection" class="tsd-kind-icon">order<wbr>Collection</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#orderqueue" class="tsd-kind-icon">order<wbr>Queue</a>
@@ -173,7 +194,13 @@ npm run simulate
 						<a href="globals.html#orderreciever_" class="tsd-kind-icon">order<wbr>Reciever$</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#serviceaccount" class="tsd-kind-icon">service<wbr>Account</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#simplex" class="tsd-kind-icon">simplex</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#buysortbyprice" class="tsd-kind-icon">buy<wbr>Sort<wbr>ByPrice</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#createsellqueue" class="tsd-kind-icon">create<wbr>Sell<wbr>Queue</a>
@@ -191,6 +218,15 @@ npm run simulate
 						<a href="globals.html#generaterandomorder" class="tsd-kind-icon">generate<wbr>Random<wbr>Order</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#savematch" class="tsd-kind-icon">save<wbr>Match</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#saveorder" class="tsd-kind-icon">save<wbr>Order</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sellsortbyprice" class="tsd-kind-icon">sell<wbr>Sort<wbr>ByPrice</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#sendtomatchqueue" class="tsd-kind-icon">send<wbr>ToMatch<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
@@ -198,9 +234,6 @@ npm run simulate
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#sortbycreatedate" class="tsd-kind-icon">sort<wbr>ByCreate<wbr>Date</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#sortbyprice" class="tsd-kind-icon">sort<wbr>ByPrice</a>
 					</li>
 				</ul>
 			</nav>
