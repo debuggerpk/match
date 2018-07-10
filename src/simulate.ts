@@ -34,7 +34,7 @@ const sendToMatchQueue: (matches: Array<OrderMatch>) => void = matches => {
  * Simulating order generation and sending it to exchange
  */
 connection.completeConfiguration().then(() => {
-  interval(0.5)
+  interval(1000)
     .pipe(
       map(generateRandomOrder),
       tap(sendToOrderQueue),

@@ -50,21 +50,3 @@ ava('Buy Queue: Addition Successfull', test => {
   test.is(queue.isEmpty(), false);
   test.is(queue.size(), 1);
 });
-
-// ava('Buy Queue: Priority Queuing Succesful', async t => {
-//   const clock = t.clock();
-//   const queue: BuyQueue = t.context['buyQueue'];
-
-//   const orders = [
-//     () => new Order(150, 100, OrderType.BUY),
-//     () => new Order(100, 100, OrderType.BUY),
-//     () => new Order(175, 100, OrderType.BUY),
-//     () => new Order(125, 100, OrderType.BUY),
-//   ];
-
-//   orders.forEach(order => setTimeout(() => queue.add(order()), 10));
-
-//   await clock.time(100);
-
-//   t.is(queue.size(), 4);
-// });

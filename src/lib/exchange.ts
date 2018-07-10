@@ -95,6 +95,9 @@ export class Exchange {
    * @memberof Exchange
    */
   private matchBuys(buyOrder: Order): void {
+    console.log('\n--- Buy Order ---\n');
+    console.log(buyOrder);
+
     if (this.sellQueue.isEmpty()) {
       this.buyQueue.add(buyOrder);
     }
@@ -102,6 +105,9 @@ export class Exchange {
     // the loop might not be effecient, but javascript build in concurrency takes the cake.
     while (!this.sellQueue.isEmpty()) {
       let sellOrder = <Order>this.sellQueue.dequeue();
+
+      console.log('\n--- Min Sell Order ---\n');
+      console.log(sellOrder);
 
       if (buyOrder.price >= sellOrder.price) {
         if (buyOrder.quantity < sellOrder.quantity) {
@@ -152,14 +158,16 @@ export class Exchange {
    * @memberof Exchange
    */
   private matchSells(sellOrder: Order): void {
+    console.log('\n--- Sell Order ---\n');
+    console.log(sellOrder);
     if (this.buyQueue.isEmpty()) {
       this.sellQueue.add(sellOrder);
       return;
     }
 
-    let minBuyOrder = <Order>this.buyQueue.minByPrice();
+    let maxBuyOrder = <Order>this.buyQueue.maxByPrice();
 
-    if (minBuyOrder.price > sellOrder.price) {
+    if (maxBuyOrder.price > sellOrder.price) {
       this.buyQueue.iterateByDate(buyOrder => {
         if (buyOrder.price >= sellOrder.price) {
           if (sellOrder.quantity > buyOrder.quantity) {
@@ -175,8 +183,8 @@ export class Exchange {
             // Now to break the loop or not
             // if the minimum buy order is still greater than current sell price, we break the loop here, else we
             // keep on iterating
-            minBuyOrder = <Order>this.buyQueue.minByPrice();
-            if (this.buyQueue.isEmpty() || (minBuyOrder && minBuyOrder.price < sellOrder.price)) {
+            maxBuyOrder = <Order>this.buyQueue.maxByPrice();
+            if (this.buyQueue.isEmpty() || (maxBuyOrder && maxBuyOrder.price < sellOrder.price)) {
               return false;
             }
           } else {
