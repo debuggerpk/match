@@ -123,11 +123,7 @@ export class Exchange {
             break;
           }
 
-          buyOrder = {
-            ...buyOrder,
-            quantity: buyOrder.quantity - sellOrder.quantity,
-            updatedAt: new Date(),
-          };
+          buyOrder = { ...buyOrder, quantity: buyOrder.quantity - sellOrder.quantity, updatedAt: new Date() };
         }
       } else {
         this.buyQueue.add(buyOrder);

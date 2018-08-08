@@ -1,6 +1,6 @@
 # Introduction
 
-Although the test doesn't cover it, but in real life, the overall solution needs to address the following.
+This is a proof of concept for a simple matching engine for a tranding platform. Althought the proof of concept does not cover it but in real life, the overall solution needs to address the following.
 
 1.  Concurrency and Collision Detection
 1.  Latency (Could be network, could be speed of execution, could be because of bad garbage collection).
